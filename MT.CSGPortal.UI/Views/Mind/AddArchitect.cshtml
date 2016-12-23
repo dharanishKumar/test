@@ -1,0 +1,211 @@
+﻿@model MT.CSGPortal.Entities.ViewModels.AddArchitect
+@{
+    ViewBag.Title = "AddArchitect";
+}
+@Styles.Render("~/Content/datepicker")
+<!-- Left -->
+
+<div class="container-left">
+    <div class="col-sm-2">
+        <div class="bs-example">
+            <div class="list-group">
+                <a href="/Mind/Search" class="list-group-item">
+                    Search
+                </a>
+                <a href="/Mind/SyncDetails" class="list-group-item">
+                    Synchronise
+                </a>
+                <a href="/Mind/AddArchitect" class="list-group-item active">
+                    AddArchitect
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Center -->
+<div class="container-center">
+    <div class="col-sm-7">
+        
+        <h2>Manage Mind</h2>
+        <!-- Architect details container -->
+        <div id="AddArchitectForm" class="well">
+            @using (Ajax.BeginForm("AddArchitect", "Mind", null, new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "responseMsgs", LoadingElementId = "submitforminprogress", OnComplete = "HideFormMessage" }, new { @class = "bs-example form-horizontal" }))
+            {
+                #region AjaxForm
+                <div id="responseMsgs">
+                    @Html.Partial("_FormMessages", Model.FormSubmissionMessages)
+                </div>
+                Html.EnableClientValidation();
+                <fieldset>
+                    <legend>Architect details</legend>
+                    <div id="submitforminprogress" class="loadingmain formsubmit">
+                        <img src="~/Images/mainloader.gif" />
+                    </div>
+                    <!-- MID -->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.MID, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-8">
+                            @Html.TextBoxFor(model => model.MID, new { @class = "form-control", @readonly = "true" })
+                        </div>
+                    </div>
+                    @Html.Hidden("MindDetails.InactiveDateDD", Model.MindDetails.InactiveDateDD)
+                    @Html.Hidden("MindDetails.InactiveDateMM", Model.MindDetails.InactiveDateMM)
+                    @Html.Hidden("InactiveDateYYYY", Model.MindDetails.InactiveDateYYYY)
+
+                    <!-- Name -->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Name, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-8">
+                            @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @readonly = "true" })
+                        </div>
+                    </div>
+
+                    <!-- Professional summary -->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ProfessionalSummary, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-8">
+                            @Html.TextAreaFor(model => model.ProfessionalSummary, new { @class = "form-control", @rows = "3" })
+                            <span class="help-block">Max. of XXXX characters</span>
+                        </div>
+                    </div>
+
+                    <!-- Exp in months -->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ExperienceInMonths, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-8">
+                            @Html.TextBoxFor(model => model.ExperienceInMonths, new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <!-- Designation -->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Designation, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-8">
+                            @Html.TextBoxFor(model => model.Designation, new { @class = "form-control", @readonly = "true" })
+                        </div>
+                    </div>
+
+                    <!-- Base Location -->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.BaseLocation, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-8">
+                            @Html.TextBoxFor(model => model.BaseLocation, new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <!-- Qualification -->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Qualification, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-8">
+                            @Html.TextBoxFor(model => model.Qualification, new { @class = "form-control", @readonly = "true" })
+                        </div>
+                    </div>
+
+                    <!-- Joined Date -->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.JoinedDate, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-8">
+                            @Html.TextBoxFor(model => model.JoinedDate, new { @class = "form-control", @readonly = "true" })
+                        </div>
+                    </div>
+
+                    @Html.Hidden("MindDetails.JoinedDateDD", Model.MindDetails.JoinedDateDD)
+                    @Html.Hidden("MindDetails.JoinedDateMM", Model.MindDetails.JoinedDateMM)
+                    @Html.Hidden("MindDetails.JoinedDateYYYY", Model.MindDetails.JoinedDateYYYY)
+
+                    <!-- Extension num -->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ExtensionNumber, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-8">
+                            @Html.TextBoxFor(model => model.ExtensionNumber, new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <!-- Cell phone num -->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.CellPhoneNumber, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-8">
+                            @Html.TextBoxFor(model => model.CellPhoneNumber, new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <!-- Residence phone num -->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ResidencePhoneNumber, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-8">
+                            @Html.TextBoxFor(model => model.ResidencePhoneNumber, new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <!-- Work email -->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.WorkEmail, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-8">
+                            @Html.TextBoxFor(model => model.WorkEmail, new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <!-- personal email -->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PersonalEMail, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-8">
+                            @Html.TextBoxFor(model => model.PersonalEMail, new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <!-- buttons -->
+                    <div class="form-group">
+                        <div class="col-lg-10 col-lg-offset-2">
+                            <button type="button" onclick="backToResults()" class="btn btn-default">Back</button>
+                            @*<button type="submit" class="btn btn-primary">Save Changes</button>*@
+                            <input type="submit" class="btn btn-primary" value="Save Changes" onclick="EmptyFormMessage()" />
+                        </div>
+                    </div>
+                </fieldset>
+                #endregion
+            }
+        </div>
+      </div>
+</div>
+
+<!-- Right -->
+<div class="container-right">
+    <div class="col-sm-3">
+        <div class="well">
+            Sample div content!
+        </div>
+
+        <div class="bs-example" style="margin-bottom: 40px;">
+            <span class="label label-default">Tag1</span>
+            <span class="label label-primary">Tag2</span>
+            <span class="label label-success">Tag3</span>
+            <span class="label label-warning">Tag4</span>
+            <span class="label label-danger">Tag5</span>
+            <span class="label label-info">Tag6</span>
+        </div>
+        <div class="well">
+            Some more sample div content!
+        </div>
+        <div class="list-group">
+            <a href="#" class="list-group-item">
+                <h4 class="list-group-item-heading">List item 1</h4>
+                <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus.</p>
+            </a>
+            <a href="#" class="list-group-item">
+                <h4 class="list-group-item-heading">List item 2</h4>
+                <p class="list-group-item-text">Maecenas sed diam eget risus varius blandit.</p>
+            </a>
+        </div>
+
+        <div class="well">
+            More and more div content!
+        </div>
+
+
+        
+    </div>
+</div>
+
+<div class="clearfix"></div>

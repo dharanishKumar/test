@@ -1,0 +1,62 @@
+﻿<div class="panel-heading">
+    <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{i.Mid}}" data-mid="{{i.Mid}}">
+            {{i.Name}}
+        </a>
+    </h4>
+</div>
+<div id="collapse{{i.Mid}}" class="panel-collapse collapse">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-4">
+                <img class="img-responsive margin-bottom-20 profileImg" alt="">
+            </div>
+            <div class="col-sm-8">
+                <p>Basic Profile</p>
+                <dl class="dl-horizontal">
+                    <dt style="text-align:left">
+                        Name
+                    </dt>
+
+                    <dd>
+                        {{i.Name}}
+                    </dd>
+
+                    <dt style="text-align:left">
+                        MID
+                    </dt>
+
+                    <dd>
+                        {{i.Mid}}
+                    </dd>
+
+                    @*<dt style="text-align:left">
+                        Professional Summary
+                    </dt>
+
+                    <dd>
+                        {{i.ProfessionalSummary}}
+                    </dd>*@
+
+                    <dt style="text-align:left">
+                        Joined Date
+                    </dt>
+
+                    <dd>
+                        {{i.JoinedDate}}
+                    </dd>
+
+                    <dt style="text-align:left">
+                        Designation
+                    </dt>
+
+                    <dd>
+                        {{i.Designation}}
+                    </dd>
+                </dl>
+                <a href="/Mind/AddArchitect/{{i.Mid}}" id="addbtn{{i.Mid}}" class="btn btn-default btn-xs" target="_self" ng-click="AddArchitect(i.Mid)">Add/Update</a>
+                @*<button ng-click="AddArchitect(i.MID)" class="btn btn-success btn-xs">Add Architect to Portal</button>*@
+            </div>
+        </div>
+    </div>
+</div>

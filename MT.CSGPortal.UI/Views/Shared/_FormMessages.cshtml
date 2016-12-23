@@ -1,0 +1,45 @@
+﻿@model MT.CSGPortal.Entities.ViewModels.Messages
+
+<div id="formMessages">
+    @if (Model.SuccessMessages.Count > 0)
+    {
+        <div class="alert alert-dismissable alert-success">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            @foreach (var message in Model.SuccessMessages)
+        {
+            if (!string.IsNullOrEmpty(message))
+            {
+        <p>@message</p>
+            }
+        }
+        </div>
+    }
+
+    @if (Model.ErrorMessages.Count > 0)
+    {
+        <div class="alert alert-dismissable alert-danger">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            @foreach (var message in Model.ErrorMessages)
+        {
+            if (!string.IsNullOrEmpty(message))
+            {
+        <p>@message</p>
+            }
+        }
+        </div>
+    }
+
+    @if (Model.WarningMessages.Count > 0)
+    {
+        <div class="alert alert-dismissable alert-warning">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            @foreach (var message in Model.WarningMessages)
+        {
+            if (!string.IsNullOrEmpty(message))
+            {
+        <p>@message</p>
+            }
+        }
+        </div>
+    }
+</div>

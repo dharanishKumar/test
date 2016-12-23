@@ -1,0 +1,102 @@
+﻿
+@{
+    ViewBag.Title = "SyncDetails";
+}
+
+<!-- Left -->
+
+<div class="container-left">
+    <div class="col-sm-2">
+
+        <div class="bs-example">
+            <div class="list-group">
+                <a href="/Mind/Search" class="list-group-item">
+                    Search
+                </a>
+                <a href="/Mind/SyncDetails" class="list-group-item active">
+                    Synchronise
+                </a>
+                <a href="/Mind/AddArchitect" class="list-group-item">
+                    AddArchitect
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Center -->
+<div class="container-center">
+    <div class="col-sm-7">
+        <h2>Update Mind Details</h2>
+        <div class="well">
+            @using (Ajax.BeginForm("SyncDBAjax", "Mind", null, new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "responseMsgs", LoadingElementId = "submitforminprogress", OnComplete = "HideFormMessage" }, new { @class = "bs-example form-horizontal" }))
+            {
+
+                <div id="responseMsgs">
+                </div>
+                <div id="submitforminprogress" class="loadingmain formsubmit">
+                    <img src="~/Images/mainloader.gif" />
+                </div>
+                <fieldset>
+                    <legend>Important!</legend>
+                    <p style="text-align:justify">
+                        This operation cannot be undone. Synchronising the database will update all Mind's details with the information from Active Directory. Only professional summary, experience and contact information which is not available in Active Directory will remain unchanged.
+                    </p>
+                    <p style="text-align:justify">
+                        This operation may take a few minutes to complete. 
+                    </p>
+                    <input type="submit" class="btn btn-primary" value="Sync Database" onclick="EmptyFormMessage()" />
+                </fieldset>
+            }
+        </div>
+    </div>
+</div>
+
+<!-- Right -->
+<div class="container-right">
+    <div class="col-sm-3">
+        <div class="well">
+            Sample div content!
+        </div>
+
+        <div class="well">
+            Some more sample div content!
+        </div>
+
+
+
+
+        <div class="list-group">
+            <a href="#" class="list-group-item">
+                <h4 class="list-group-item-heading">List item 1</h4>
+                <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus.</p>
+            </a>
+            <a href="#" class="list-group-item">
+                <h4 class="list-group-item-heading">List item 2</h4>
+                <p class="list-group-item-text">Maecenas sed diam eget risus varius blandit.</p>
+            </a>
+        </div>
+
+        <div class="well">
+            More and more div content!
+        </div>
+
+
+        <div class="bs-example" style="margin-bottom: 40px;">
+            <span class="label label-default">Tag1</span>
+            <span class="label label-primary">Tag2</span>
+            <span class="label label-success">Tag3</span>
+            <span class="label label-warning">Tag4</span>
+            <span class="label label-danger">Tag5</span>
+            <span class="label label-info">Tag6</span>
+        </div>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+
+@section scripts{
+
+}
+
